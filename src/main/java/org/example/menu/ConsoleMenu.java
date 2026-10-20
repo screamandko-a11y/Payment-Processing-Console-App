@@ -123,14 +123,26 @@ public class ConsoleMenu {
         return PaymentMethodFactory.createCreditCardPayment(cardNumber,cardHolderName);
     }
 
+    // set PayPal as a payment method
     private  PaymentMethod createPaypalPayment(){
-        // TODO
-        return null;
+        System.out.println("Email :");
+        String email = scanner.nextLine();
+
+        System.out.println("Password :");
+        String password = scanner.nextLine();
+
+        return  PaymentMethodFactory.createCreditPayPall(email);
+
     }
 
-    private PaymentMethod createGiftCardPayment(){
-        // TODO
-        return null;
+    private PaymentMethod createGiftCardPayment() {
+        System.out.println("Gift card code:");
+        String code = scanner.nextLine();
+
+        System.out.println("Gift card balance:");
+        double balance = Double.parseDouble(scanner.nextLine());
+
+        return PaymentMethodFactory.createGiftCardPayment(code, balance);
     }
 
     private void printMenu(){
