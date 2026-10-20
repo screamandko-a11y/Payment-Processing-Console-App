@@ -16,7 +16,11 @@ public class Order {
     }
 
     public void addItem(OrderItem item){
-        // TODO: prevent adding items if order is already paid
+        // prevented adding items if order is already
+
+        if (status == OrderStatus.PAID) {
+            throw new IllegalStateException("Cannot add items. Order is already completed!");
+        }
         items.add(item);
     }
 
@@ -29,18 +33,19 @@ public class Order {
             total += item.calculateTotal();
         }
 
-        // first version apply discount
-        if (total > 100) {
-            Discount discount =
-                    new FixedAmountDiscount("OVER100", 10);
-
-            total = discount.apply(total);
-        }
         return total;
     }
 
     public void markAsPaid(){
-        // TODO: validate order is not empty
+        //validated order is not empty
+
+        if (items.isEmpty()) {
+            throw new IllegalStateException("Cannot pay for an empty order!");
+        }
+
+        if (status != OrderStatus.NEW) {
+            throw new IllegalStateException("Order cannot be paid in its current status!");
+        }
         this.status = OrderStatus.PAID;
     }
 
