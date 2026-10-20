@@ -18,6 +18,8 @@ public class PaymentMethodFactory {
         return new GiftCardPayment("Gift Card", code, balance);
     }
 
-
-
+    public static PaymentMethod createCryptoPayment(
+            String cryptocurrency, String walletAddress) {
+        return new CryptoPayment(cryptocurrency, walletAddress);
+    }
 }

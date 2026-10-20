@@ -16,6 +16,7 @@ public class PaymentMethodReader {
                     1. Credit Card
                     2. PayPal
                     3. Gift Card
+                    4. Cryptocurrency
                     """);
 
             switch (option) {
@@ -25,6 +26,8 @@ public class PaymentMethodReader {
                     return readPaypal();
                 case 3:
                     return readGiftCard();
+                case 4:
+                    return readCrypto();
                 default:
                     System.out.println("Invalid payment method.");
             }
@@ -51,5 +54,16 @@ public class PaymentMethodReader {
     public PaymentMethod readPaypal() {
         String email = input.readString("Email:");
         return PaymentMethodFactory.createCreditPayPall(email);
+    }
+
+    private PaymentMethod readCrypto() {
+        String cryptocurrency = input.readString(
+                "Cryptocurrency (for example BTC, ETH or USDT):"
+        ).trim();
+        String walletAddress = input.readString("Public wallet address:").trim();
+
+        return PaymentMethodFactory.createCryptoPayment(
+                cryptocurrency, walletAddress
+        );
     }
 }
