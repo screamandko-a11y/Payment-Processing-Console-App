@@ -21,10 +21,20 @@ public class Order {
     }
 
     public double calculateTotal(){
+
         double total = 0;
+
         // calculate 'total' using instance every 'order Item'
         for (OrderItem item : items) {
             total += item.calculateTotal();
+        }
+
+        // first version apply discount
+        if (total > 100) {
+            Discount discount =
+                    new FixedAmountDiscount("OVER100", 10);
+
+            total = discount.apply(total);
         }
         return total;
     }
