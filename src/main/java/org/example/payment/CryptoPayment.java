@@ -2,9 +2,8 @@ package org.example.payment;
 
 import org.example.model.PaymentResult;
 
-/**
- * Simulates a cryptocurrency payment without sending a blockchain transaction.
- */
+
+ // cryptocurrency payment without validations :(
 public class CryptoPayment extends PaymentMethod {
     private final String cryptocurrency;
     private final String walletAddress;
@@ -25,7 +24,7 @@ public class CryptoPayment extends PaymentMethod {
             return new PaymentResult(false, "Wallet address is required.");
         }
 
-        // Amount remains the order total; no exchange rate is applied.
+        // amount remains the order total; no exchange rate is applied.
         return new PaymentResult(
                 true,
                 "Simulated crypto payment using " + cryptocurrency
