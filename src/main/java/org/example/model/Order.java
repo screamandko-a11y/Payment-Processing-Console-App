@@ -21,8 +21,12 @@ public class Order {
     }
 
     public double calculateTotal(){
-        // TODO: calculate total from all order items (including discounts)
-        return 0;
+        double total = 0;
+        // calculate 'total' using instance every 'order Item'
+        for (OrderItem item : items) {
+            total += item.calculateTotal();
+        }
+        return total;
     }
 
     public void markAsPaid(){

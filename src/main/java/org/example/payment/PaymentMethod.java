@@ -8,6 +8,7 @@ public abstract class PaymentMethod {
         this.providerName = providerName;
     }
     public PaymentResult pay(double amount){
+
         if (amount <= 0){
             return new  PaymentResult(false, "Amount must be greater than zero.");
         }
