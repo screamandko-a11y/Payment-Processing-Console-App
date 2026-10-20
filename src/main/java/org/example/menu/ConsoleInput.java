@@ -15,6 +15,16 @@ public class ConsoleInput {
         return scanner.nextLine();
     }
 
+    public String readNonBlankString(String prompt) {
+        while (true) {
+            String value = readString(prompt);
+            if (!value.isBlank()) {
+                return value.strip();
+            }
+            System.out.println("Value must not be blank.");
+        }
+    }
+
     public int readInt(String prompt) {
         while (true) {
             try {

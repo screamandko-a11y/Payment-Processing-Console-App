@@ -8,15 +8,18 @@ import org.example.payment.PaymentProcessor;
 
 public class OrderService {
     private final PaymentProcessor paymentProcessor;
+    private final TaxCalculator taxCalculator;
     private Order currentOrder;
 
-    public OrderService(PaymentProcessor paymentProcessor) {
+    public OrderService(PaymentProcessor paymentProcessor, TaxCalculator taxCalculator) {
         this.paymentProcessor = paymentProcessor;
+        this.taxCalculator = taxCalculator;
     }
 
     public void createOrder(String customerName) {
         currentOrder = Order.builder()
                 .customerName(customerName)
+                .taxCalculator(taxCalculator)
                 .build();
     }
 

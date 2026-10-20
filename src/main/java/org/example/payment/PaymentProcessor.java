@@ -7,14 +7,14 @@ import org.example.model.PaymentResult;
 public class PaymentProcessor {
     public PaymentResult process(Order order, PaymentMethod paymentMethod){
 
-        // Prevent paying already paid or cancelled orders
+        // prevent paying already paid or cancelled orders
         if (order.getStatus() != OrderStatus.NEW) {
             throw new IllegalStateException(
                     "Order cannot be paid in its current status!"
             );
         }
 
-        // Prevent paying empty orders
+        // prevent paying empty orders
         if (order.getItems().isEmpty()) {
             throw new IllegalStateException(
                     "Cannot pay for an empty order!"

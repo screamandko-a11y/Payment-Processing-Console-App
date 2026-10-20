@@ -36,7 +36,7 @@ public class PaymentMethodReader {
 
     private PaymentMethod readCreditCard() {
         String cardNumber = input.readString("Card number:");
-        String cardHolderName = input.readString("Card holder name:");
+        String cardHolderName = input.readNonBlankString("Card holder name:");
 
         return PaymentMethodFactory.createCreditCardPayment(
                 cardNumber, cardHolderName

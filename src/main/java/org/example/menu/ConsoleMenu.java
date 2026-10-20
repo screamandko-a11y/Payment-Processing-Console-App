@@ -5,22 +5,12 @@ import org.example.model.Order;
 import org.example.model.OrderItem;
 import org.example.model.PaymentResult;
 import org.example.payment.PaymentMethod;
-import org.example.payment.PaymentProcessor;
 import org.example.service.OrderService;
-
-import java.util.Scanner;
 
 public class ConsoleMenu {
     private final ConsoleInput input;
     private final PaymentMethodReader paymentMethodReader;
     private final OrderService orderService;
-
-    public ConsoleMenu() {
-        this(
-                new ConsoleInput(new Scanner(System.in)),
-                new OrderService(new PaymentProcessor())
-        );
-    }
 
     public ConsoleMenu(ConsoleInput input, OrderService orderService) {
         this.input = input;
@@ -90,8 +80,10 @@ public class ConsoleMenu {
         }
 
         System.out.println(
-                "Total: " + currentOrder.calculateTotal()
+                "Subtotal: " + currentOrder.calculateSubtotal()
         );
+        System.out.println("Tax: " + currentOrder.calculateTax());
+        System.out.println("Total: " + currentOrder.calculateTotal());
     }
 
     private void payOrder() {
