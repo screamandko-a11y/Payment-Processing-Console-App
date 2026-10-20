@@ -21,13 +21,11 @@ public class PaymentProcessor {
             );
         }
 
-
         PaymentResult result = paymentMethod.pay(order.calculateTotal());
 
         if(result.isSuccessful()){
             order.markAsPaid();
         }
-
         return result;
     }
 }

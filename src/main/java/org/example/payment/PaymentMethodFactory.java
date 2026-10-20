@@ -1,6 +1,9 @@
 package org.example.payment;
 
+
+// created factories for PayPal and gift card
 public class PaymentMethodFactory {
+
     public static PaymentMethod createCreditCardPayment(String cardNumber,String cardHolderName){
         return new CreditCardPayment(cardNumber,cardHolderName);
     }
@@ -13,5 +16,5 @@ public class PaymentMethodFactory {
     }
 
 
-    // TODO: create factories for PayPal and gift card
+
 }
